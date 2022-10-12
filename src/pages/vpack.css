@@ -1,0 +1,40 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 300px;
+  background-color: white;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  background-color: white;
+  text-align: center;
+  font-family: sans-serif;
+  gap: -25px;
+}
+
+.sen {
+  /* FONT-WEIGHT: 500; */
+    font-size: 3rem;
+  color: black;
+  text-align: center;
+  font-family:cursive;
+  margin: 100px 0px;
+}
+
+.layoo {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+ justify-content: space-evenly;
+ margin-bottom: 50px;
+}
+
+.nopack{
+  font-size: 1.5rem;
+
+}

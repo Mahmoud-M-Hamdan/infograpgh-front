@@ -1,0 +1,14 @@
+.starting {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.starting h1 {
+  font-size: 5rem;
+  font-family: cursive;
+}
+
+.starting p {
+  font-size: 2.5rem;
+  font-family: cursive
+}
