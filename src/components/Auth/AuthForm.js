@@ -34,9 +34,9 @@ const AuthForm = () => {
       setLoad("wait please . . .")
       let url;
       if (isLogin) {
-        url = "http://localhost:3030/users/login";
+        url = "https://infograph-backk.herokuapp.com/users/login";
       } else {
-        url = "http://localhost:3030/users";
+        url = "https://infograph-backk.herokuapp.com/users";
       }
       try {
         const response = await fetch(url, {

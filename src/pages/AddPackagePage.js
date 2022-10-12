@@ -39,7 +39,7 @@ const AddPackage = (props) => {
     const sendData = async () => {
       const token=localStorage.getItem('token')
       try {
-        const response = await fetch("http://localhost:3030/packages", {
+        const response = await fetch("https://infograph-backk.herokuapp.com/packages", {
           method: "POST",
           body: JSON.stringify(obj),
           headers: {

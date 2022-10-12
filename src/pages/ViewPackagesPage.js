@@ -8,7 +8,7 @@ const ViewPackage = () => {
   useEffect(() => {
     const getMyData = async () => {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3030/packages", {
+      const response = await fetch("https://infograph-backk.herokuapp.com/packages", {
         method: "GET",
         headers: {
           Authorization: "Bearar " + token,
