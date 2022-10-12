@@ -19,6 +19,12 @@ const AuthForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(passwordRef.current.value)
+    if(!(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/.test(passwordRef.current.value))){
+      setError ("The password should be at Minimum eight characters, at least one letter, one number and one special character")
+      return
+    }else{setError(null)}
+   
     const obj = isLogin
       ? {
           password: passwordRef.current.value,
@@ -31,7 +37,7 @@ const AuthForm = () => {
           phoneNumber: phoneRef.current.value,
         };
     const sendData = async () => {
-      setLoad("wait please . . .")
+      setLoad("wait please . . .");
       let url;
       if (isLogin) {
         url = "https://infograph-backk.herokuapp.com/users/login";
@@ -46,20 +52,24 @@ const AuthForm = () => {
             "Content-Type": "application/json",
           },
         });
-        setLoad("You will be in soon . . .")
+        setLoad("You will be in soon . . .");
 
         if (!response.ok) {
-          setLoad(null)
-          throw "the email or password is not valid!";
+          setLoad(null);
+          if (isLogin) {
+            throw "the email or password is not valid!";
+          } else {
+            throw "make sure you type a valid email and a strong password";
+          }
         }
         const data = await response.json();
         console.log(data.token);
-        console.log(data)
-        ctx.loggIn(data.token,data.username);
-        setLoad(null)
+        console.log(data);
+        ctx.loggIn(data.token, data.username);
+        setLoad(null);
         history.push("/");
       } catch (error) {
-        setError(error)
+        setError(error);
       }
     };
 
@@ -95,6 +105,8 @@ const AuthForm = () => {
               <label htmlFor="password">Your Password</label>
               <input type="password" id="password" ref={passwordRef} required />
             </div>
+            {load && <p>{load}</p>}
+            {error && <p>{error}</p>}
             <div className={classes.actions}>
               <button>{isLogin ? "Login" : "Create Account"}</button>
               <button
@@ -114,10 +126,10 @@ const AuthForm = () => {
             </div>
             <div className={classes.control}>
               <label htmlFor="password">Your Password</label>
-              <input type="password" id="password" ref={passwordRef} required />
+              <input type="password" id="password" pattern=".{8,16}"   required title="8 characters minimum" ref={passwordRef} required />
             </div>
             {load && <p>{load}</p>}
-            {error&&<p>{error}</p>}
+            {error && <p>{error}</p>}
             <div className={classes.actions}>
               <button>{isLogin ? "Login" : "Create Account"}</button>
               <button
@@ -128,7 +140,6 @@ const AuthForm = () => {
                 {isLogin ? "Create new account" : "Login with existing account"}
               </button>
             </div>
-       
           </>
         )}
       </form>
